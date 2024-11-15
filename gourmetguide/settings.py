@@ -1,16 +1,15 @@
 import environ
-import os
 from pathlib import Path
 
+# Initialize environment variables
 env = environ.Env()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-environ.Env.read_env()  # This loads the variables from the .env file
+# Read the .env file
+environ.Env.read_env()  # Ensure .env file is being read
 
 # Fetch the SECRET_KEY from the environment
 SECRET_KEY = env('SECRET_KEY')
-
-
 
 DEBUG = True
 
@@ -65,11 +64,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'gourmetguide.wsgi.application'
 
-# Database (use SQLite for local development)
+# Database (PostgreSQL configuration from .env)
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT', default='5432'),  # Default to 5432 if not set
     }
 }
 

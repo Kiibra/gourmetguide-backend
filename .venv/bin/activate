@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/kibrabuluts/code/sei/repos/gourmetguide-prj/gourmetguide-back/.venv"
+VIRTUAL_ENV="/Users/kibrabuluts/code/sei/projects/gourmetguide/Backend/.venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
